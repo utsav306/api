@@ -12,84 +12,201 @@ const App: React.FC = () => {
 
   const categories = [
     "All",
-    "Authentication",
-    "Data Processing",
+    "Task Management",
+    "Optimization",
     "Analytics",
-    "Storage",
-    "Payment",
+    "Resource Management",
+    "Communication",
+    "Integration",
+    "Smart City",
   ];
 
   const apis = [
     {
       id: "1",
-      name: "User Authentication API",
+      name: "Task Management API",
       description:
-        "Secure user authentication and authorization service with OAuth2 and JWT support. Includes social login integration and multi-factor authentication capabilities.",
-      category: "Authentication",
+        "Comprehensive API for task creation, updating, and tracking within UrbNexus. Supports task prioritization, deadlines, and inter-departmental assignments.",
+      category: "Task Management",
       price: "Premium",
-      cost: 199,
+      cost: 299,
       endpoints: [
         {
           method: "POST",
-          path: "/api/auth/login",
-          description: "User login endpoint",
-        },
-        {
-          method: "POST",
-          path: "/api/auth/register",
-          description: "New user registration",
+          path: "/api/tasks/create",
+          description: "Create a new task",
         },
         {
           method: "GET",
-          path: "/api/auth/verify",
-          description: "Token verification",
+          path: "/api/tasks",
+          description: "Retrieve all tasks",
+        },
+        {
+          method: "GET",
+          path: "/api/tasks/{task_id}",
+          description: "Get details of a specific task",
+        },
+        {
+          method: "PATCH",
+          path: "/api/tasks/{task_id}/status",
+          description: "Update task status",
+        },
+        {
+          method: "DELETE",
+          path: "/api/tasks/{task_id}",
+          description: "Delete a task",
         },
       ],
-      metrics: { users: "2.5M", requests: "150M/month", uptime: "99.99%" },
+      metrics: { users: 0, requests: 0, uptime: "100%" },
     },
     {
       id: "2",
-      name: "Data Analytics Engine",
+      name: "Task Merge & Conflict Resolution API",
       description:
-        "Advanced analytics API for processing and analyzing large datasets in real-time. Features machine learning capabilities and predictive modeling.",
-      category: "Analytics",
+        "Automated task conflict detection and merging mechanism to optimize urban resource management.",
+      category: "Optimization",
       price: "Enterprise",
       cost: 499,
       endpoints: [
         {
           method: "POST",
-          path: "/api/analytics/process",
-          description: "Process dataset",
+          path: "/api/tasks/merge-check",
+          description: "Check and merge overlapping tasks",
         },
         {
           method: "GET",
-          path: "/api/analytics/results",
-          description: "Retrieve analysis results",
+          path: "/api/tasks/conflicts",
+          description: "Retrieve conflicting tasks",
         },
       ],
-      metrics: { users: "1.2M", requests: "80M/month", uptime: "99.95%" },
+      metrics: { users: 0, requests: 0, uptime: "100%" },
     },
     {
       id: "3",
-      name: "Storage Service API",
+      name: "Resource Allocation API",
       description:
-        "Scalable cloud storage solution with automatic backup and versioning. Supports multiple file formats and provides secure access control.",
-      category: "Storage",
+        "Smart resource allocation for urban infrastructure projects. Automatically assigns workforce and materials based on task priority and availability.",
+      category: "Resource Management",
+      price: "Pro",
+      cost: 399,
+      endpoints: [
+        {
+          method: "POST",
+          path: "/api/resources/allocate",
+          description: "Allocate resources for a task",
+        },
+        {
+          method: "GET",
+          path: "/api/resources/availability",
+          description: "Check available resources",
+        },
+      ],
+      metrics: { users: 0, requests: 0, uptime: "100%" },
+    },
+    {
+      id: "4",
+      name: "Inter-Departmental Communication API",
+      description:
+        "Facilitates official communication and collaboration between different city departments.",
+      category: "Communication",
+      price: "Premium",
+      cost: 199,
+      endpoints: [
+        {
+          method: "POST",
+          path: "/api/communications/send",
+          description: "Send a message between departments",
+        },
+        {
+          method: "GET",
+          path: "/api/communications/history/{dept_id}",
+          description: "Retrieve department communication history",
+        },
+      ],
+      metrics: { users: 0, requests: 0, uptime: "100%" },
+    },
+    {
+      id: "5",
+      name: "Webhook Subscription API",
+      description:
+        "Enables third-party applications to receive real-time updates on task status changes.",
+      category: "Integration",
       price: "Free",
       cost: 0,
       endpoints: [
         {
-          method: "PUT",
-          path: "/api/storage/upload",
-          description: "Upload files",
+          method: "POST",
+          path: "/api/webhooks/task-updates",
+          description: "Subscribe to task update notifications",
+        },
+      ],
+      metrics: { users: 0, requests: 0, uptime: "100%" },
+    },
+    {
+      id: "6",
+      name: "Department-Wise Task Assignment API",
+      description:
+        "Allows departments to manage tasks efficiently by assigning, tracking, and reviewing them.",
+      category: "Task Management",
+      price: "Premium",
+      cost: 299,
+      endpoints: [
+        {
+          method: "GET",
+          path: "/api/departments/{dept_id}/tasks",
+          description: "Fetch tasks assigned to a specific department",
+        },
+        {
+          method: "POST",
+          path: "/api/departments/review",
+          description: "Submit a report on completed tasks for review",
+        },
+      ],
+      metrics: { users: 0, requests: 0, uptime: "100%" },
+    },
+    {
+      id: "7",
+      name: "Urban Planning Data & Analytics API",
+      description:
+        "Provides insights on task distribution, resource utilization, and urban planning trends.",
+      category: "Analytics",
+      price: "Enterprise",
+      cost: 599,
+      endpoints: [
+        {
+          method: "GET",
+          path: "/api/analytics/task-distribution",
+          description: "Get insights on task distribution across the city",
         },
         {
           method: "GET",
-          path: "/api/storage/download",
-          description: "Download files",
+          path: "/api/analytics/resource-utilization",
+          description: "Analyze resource utilization trends",
         },
       ],
-      metrics: { users: "3.8M", requests: "200M/month", uptime: "99.98%" },
+      metrics: { users: 0, requests: 0, uptime: "100%" },
+    },
+    {
+      id: "8",
+      name: "City Services Integration API",
+      description:
+        "Provides real-time traffic, weather, and environmental data for smart urban governance.",
+      category: "Smart City",
+      price: "Enterprise",
+      cost: 599,
+      endpoints: [
+        {
+          method: "GET",
+          path: "/api/city-services/traffic-status",
+          description: "Retrieve real-time traffic data",
+        },
+        {
+          method: "GET",
+          path: "/api/city-services/environmental-impact",
+          description: "Analyze the environmental impact of projects",
+        },
+      ],
+      metrics: { users: 0, requests: 0, uptime: "100%" },
     },
   ];
 
@@ -270,9 +387,9 @@ const App: React.FC = () => {
                           } ml-2`}
                         ></i>
                       </button>
-                      <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors !rounded-button whitespace-nowrap">
+                      {/* <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors !rounded-button whitespace-nowrap">
                         Try it now
-                      </button>
+                      </button> */}
                     </div>
 
                     {expandedApiId === api.id && (
