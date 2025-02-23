@@ -251,16 +251,17 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-md hidden">
+      <header className="bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <img
+              {/* <img
                 src="https://public.readdy.ai/ai/img_res/87af4ad16db5a3e3334058a984b7771b.jpg"
-                alt="UrbNexus Logo"
+                alt="UrbNexus"
                 className="h-8"
-              />
-              <nav className="ml-10 flex space-x-8">
+              /> */}
+              <h1 className="text-xl font-semibold">UrbNexus</h1>
+              {/* <nav className="ml-10 flex space-x-8">
                 {["Home", "APIs", "Documentation", "Pricing", "Support"].map(
                   (item) => (
                     <button
@@ -271,11 +272,11 @@ const App: React.FC = () => {
                     </button>
                   ),
                 )}
-              </nav>
+              </nav> */}
             </div>
             <button
               onClick={() => setShowLoginModal(true)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors !rounded-button whitespace-nowrap"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors !rounded-button whitespace-nowrap hidden"
             >
               <i className="fas fa-user mr-2"></i>
               Sign In
